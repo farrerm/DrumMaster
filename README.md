@@ -8,4 +8,4 @@ Drum machine is configured for Linux 32 bit machine, you may need to change sett
 
 Have fun!
 
-![drumshot](https://user-images.githubusercontent.com/23005392/55601358-6449d200-5715-11e9-9e75-567190eef70c.png)
+![drum2](https://user-images.githubusercontent.com/23005392/55602767-05d42200-571c-11e9-8bac-65053d6fe242.png)
