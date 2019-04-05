@@ -1,5 +1,6 @@
 # DrumMaster
-Software Drum Machine for Linux
+Software Drum Machine for Linux.   
+
 Dependencies: Ncurses (UI), Libsndfile (File I/O), PortMidi (midi), PortAudio (sample playback)
 
 Directions: download and install third party libraries.  Sample paths are hardcoded, you should update them.
