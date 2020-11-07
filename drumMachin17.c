@@ -1,4 +1,5 @@
 
+
 #include "portmidi.h"
 #include "porttime.h"
 #include "stdlib.h"
@@ -128,7 +129,7 @@ static int patestCallback( const void *inputBuffer, void *outputBuffer,
                            void *userData )
 {
     /* Cast data passed through stream to our structure. */
-    paData *data = (paData*)userData; 
+    paData *data = (paData*)userData;
     float *out = (float*)outputBuffer;
     unsigned int i;
     (void) inputBuffer; /* Prevent unused variable warning. */
@@ -212,16 +213,16 @@ void process_midi(PtTimestamp timestamp, void *userData)
 int main(int argc, char *argv[])
 {
     
-    BPMtent = malloc(4);
-    BPMtent2 = malloc(4);
+    BPMtent = (char*)malloc(4);
+    BPMtent2 = (char*)malloc(4);
     BPMtent = "120";
     temp1 = "";
     temp2 = "";
     
-    choices = malloc(7*sizeof(char**));
+    choices = (char***)malloc(7*sizeof(char**));
     for (int i = 0; i < 7; i++){
         
-        choices[i] = malloc(67*sizeof(char*));
+        choices[i] = (char**)malloc(67*sizeof(char*));
     }
     currBeat = 3;
  
@@ -253,23 +254,23 @@ int main(int argc, char *argv[])
         }
     }
      
-	int highlightI = 0;
+    int highlightI = 0;
         int highlightJ = 0;
-	int choice = 0;
-	int c;
+    int choice = 0;
+    int c;
         //int min = Pa_GetMinNumBuffers(FRAMES_PER_BUFFER, SAMPLE_RATE);
         
         //ncurses initialization
-	initscr();
-	clear();
-	noecho();
-	cbreak();	/* Line buffering disabled. pass on everything */
-	startx = 0;
-	starty = 0;
-	
-	keypad(stdscr, TRUE);
-	refresh();
-	print_menu(highlightI, highlightJ);
+    initscr();
+    clear();
+    noecho();
+    cbreak();    /* Line buffering disabled. pass on everything */
+    startx = 0;
+    starty = 0;
+    
+    keypad(stdscr, TRUE);
+    refresh();
+    print_menu(highlightI, highlightJ);
         //nodelay(stdscr, TRUE);
        // halfdelay(1);
     
@@ -278,7 +279,7 @@ int main(int argc, char *argv[])
     static float sampleBlock [512] ;
     
     //initialize buffer for use with paData struct
-    outBuff = malloc(FRAMES_PER_BUFFER*8);
+    outBuff = (float*)malloc(FRAMES_PER_BUFFER*8);
     SNDFILE      *infile;
     SNDFILE     *infile2;
     SNDFILE     *infile3;
@@ -350,7 +351,7 @@ int main(int argc, char *argv[])
         if(readcount2 < 512){
             break;
         }
-    } 
+    }
     int snareSize = counter2* 512 + readcount2;
     
     sf_close(infile2);
@@ -367,7 +368,7 @@ int main(int argc, char *argv[])
         if(readcount3 < 512){
             break;
         }
-    } 
+    }
     int hatSize = counter3* 512 + readcount3;
     
     sf_close(infile3);
@@ -424,7 +425,7 @@ int main(int argc, char *argv[])
     //copy hat into hat array
     
     if (! (infile3 = sf_open (infilename3, SFM_READ, &sfinfo3)))
-    {   /* Exit. */ 
+    {   /* Exit. */
         return  1 ;
     } ;
     
@@ -465,7 +466,7 @@ int main(int argc, char *argv[])
    
     //test output
     outputParameters.device = Pa_GetDefaultOutputDevice();  
-  
+ 
     outputInfo = Pa_GetDeviceInfo( outputParameters.device );   
 
     outputParameters.device = 0;
@@ -545,7 +546,7 @@ int main(int argc, char *argv[])
               //&myData );*/
     
         
-    PaAlsa_SetNumPeriods(2); 
+    PaAlsa_SetNumPeriods(2);
     PaAlsa_SetRetriesBusy(100);
      PaAlsa_EnableRealtimeScheduling(stream, 1);
     
@@ -560,7 +561,7 @@ int main(int argc, char *argv[])
      int keyIndex = 0;
      
     while(1){
-	//mvprintw(10, 10, "three");
+    //mvprintw(10, 10, "three");
         
         //choices[6][4] = "three";
        // continue;
@@ -578,7 +579,7 @@ int main(int argc, char *argv[])
              //}      
              //c = getch();
              
-             //if (c != ERR){ 
+             //if (c != ERR){
                //  if (c != pressedKeys[0]){
                 //  pressedKeys[1] = c;
                  // keyCount = 2;
@@ -606,13 +607,13 @@ int main(int argc, char *argv[])
         }*/
         
        // c = pressedKeys[0];
-		switch(c){	
+        switch(c){    
                     case KEY_UP:
-			if(highlightJ == 0){
+            if(highlightJ == 0){
                                 if(highlightI == 0)
-					highlightI = 6;
-				else
-					--highlightI;
+                    highlightI = 6;
+                else
+                    --highlightI;
                         }
                         else if (highlightJ == 1){
                             if(highlightI == 1)
@@ -635,8 +636,8 @@ int main(int argc, char *argv[])
                                --highlightI;
                             
                         }
-				break;
-			case KEY_DOWN:
+                break;
+            case KEY_DOWN:
                             if(highlightJ == 0){
                                 if(highlightI == 6){
                                     highlightI =0;
@@ -668,9 +669,9 @@ int main(int argc, char *argv[])
                                 else
                                     highlightI++;
                                 
-                            } 
+                            }
                                     
-				break;
+                break;
                     case KEY_RIGHT:
                         if(highlightI == 0 && highlightJ ==0)
                             highlightJ = 0;
@@ -746,7 +747,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                                          
@@ -761,7 +762,7 @@ int main(int argc, char *argv[])
                                 
                             }
                             else if(BPMfinal == 0){
-                               if(BPMsize <3){ 
+                               if(BPMsize <3){
                                 //strcat(BPMtent2, temp);
                                 BPMtent2[BPMsize] = 49;
                                 //BPMtent2[BPMsize] = '0';
@@ -770,7 +771,7 @@ int main(int argc, char *argv[])
                                }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                         case 50:
@@ -794,7 +795,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                           case 51:
@@ -818,7 +819,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                                          
@@ -842,7 +843,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                                          
@@ -867,7 +868,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                                          
@@ -892,7 +893,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                         case 55:
@@ -916,7 +917,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                                          
@@ -941,7 +942,7 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
                                          
@@ -966,12 +967,12 @@ int main(int argc, char *argv[])
                                 }
                             }
                             choices[0][0] = BPMtent2;    
-                        } 
+                        }
                         
                         break;
         //enter            
-			case 10:
-				//choice = 1;
+            case 10:
+                //choice = 1;
           //save drum file    
              if (highlightI == 5 && highlightJ == 1){
                  saveFinal = 1;
@@ -990,8 +991,8 @@ int main(int argc, char *argv[])
                          size_t len = strlen(choices[5][2]);
                          len2 = strlen(temp1);
                          
-                         char *str = malloc(len + 1 + 1);
-                         char *str2 = malloc(len2 + 1 + 1);
+                         char *str = (char*)malloc(len + 1 + 1);
+                         char *str2 = (char*)malloc(len2 + 1 + 1);
                          
                          strcpy(str, choices[5][2]);
                          strcpy(str2, temp1);
@@ -1020,7 +1021,7 @@ int main(int argc, char *argv[])
                              }
                          size_t len3 = strlen(temp1);
                          
-                         char *str3 = malloc(len3 + 4 + 1);
+                         char *str3 = (char*)malloc(len3 + 4 + 1);
                          strcpy(str3, temp1);
                          str3[len3] = '.';
                          str3[len3+1] = 't';
@@ -1064,8 +1065,8 @@ int main(int argc, char *argv[])
                          size_t len5 = strlen(choices[6][2]);
                          len4 = strlen(temp2);
                          
-                         char *str4 = malloc(len5 + 1 + 1);
-                         char *str5 = malloc(len4 + 1 + 1);
+                         char *str4 = (char*)malloc(len5 + 1 + 1);
+                         char *str5 = (char*)malloc(len4 + 1 + 1);
                          
                          strcpy(str4, choices[6][2]);
                          strcpy(str5, temp2);
@@ -1094,7 +1095,7 @@ int main(int argc, char *argv[])
                              }
                          size_t len6 = strlen(temp2);
                          
-                         char *str6 = malloc(len4 + 4 + 1);
+                         char *str6 = (char*)malloc(len4 + 4 + 1);
                          strcpy(str6, temp2);
                          str6[len4 + 1] = '.';
                          str6[len4+2] = 't';
@@ -1165,7 +1166,7 @@ int main(int argc, char *argv[])
                                 }
                                if (myData.snareGain < .1){
                                    myData.snareGain = 0;
-                               } 
+                               }
                             }
               if ( highlightI == 3 && highlightJ == 1){
                                 
@@ -1260,20 +1261,20 @@ int main(int argc, char *argv[])
                             else{
                                 
                             }
-				break;
-			default:
-				//mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
-				refresh();
-				break;
-		}
-		print_menu(highlightI, highlightJ);
-		if(choice != 0)	/* User did a choice come out of the infinite loop */
-			break;
-	}//end of ncurses while loop	
-	//mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
-	clrtoeol();
-	refresh();
-	endwin();
+                break;
+            default:
+                //mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
+                refresh();
+                break;
+        }
+        print_menu(highlightI, highlightJ);
+        if(choice != 0)    /* User did a choice come out of the infinite loop */
+            break;
+    }//end of ncurses while loop    
+    //mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
+    clrtoeol();
+    refresh();
+    endwin();
     
     
 }//end main method
@@ -1281,7 +1282,7 @@ int main(int argc, char *argv[])
 void print_menu(int highlightI, int highlightJ){
     
     curs_set(0);
-        int x, y, i;	
+        int x, y, i;    
         x = 2;
         y = 0;
         if(highlightI == 0 && highlightJ == 0){
@@ -1321,106 +1322,106 @@ void print_menu(int highlightI, int highlightJ){
         mvprintw(y, x +7, "%d", choices[0][0][2] - 48);
         }*/
         
-	x = 2;
-	y = 2;
-	//box(menu_win, 0, 0);
-	for(i = 1; i < 5; ++i)
-	{	if(highlightI == i && highlightJ == 0) /* High light the present choice */
-		{	attron(A_REVERSE); 
-			mvprintw(y, x, "%s", choices[i][0]);
-			attroff(A_REVERSE);
-		}
-		else
-			mvprintw(y, x, "%s", choices[i][0]);
-		++y;
-	}
+    x = 2;
+    y = 2;
+    //box(menu_win, 0, 0);
+    for(i = 1; i < 5; ++i)
+    {    if(highlightI == i && highlightJ == 0) /* High light the present choice */
+        {    attron(A_REVERSE);
+            mvprintw(y, x, "%s", choices[i][0]);
+            attroff(A_REVERSE);
+        }
+        else
+            mvprintw(y, x, "%s", choices[i][0]);
+        ++y;
+    }
         y++;
         
        
        
         for(i = 5; i < 7; ++i)
-	{	if(highlightI == i && highlightJ == 0) /* High light the present choice */
-		{	attron(A_REVERSE);
-			mvprintw(y, x, "%s", choices[i][0]);
-			attroff(A_REVERSE);
-		}
-		else
-			mvprintw(y, x, "%s", choices[i][0]);
-		++y;
-	}
+    {    if(highlightI == i && highlightJ == 0) /* High light the present choice */
+        {    attron(A_REVERSE);
+            mvprintw(y, x, "%s", choices[i][0]);
+            attroff(A_REVERSE);
+        }
+        else
+            mvprintw(y, x, "%s", choices[i][0]);
+        ++y;
+    }
         x = 12;
         y = 7;
         for(i = 5; i < 7; ++i)
-	{	if(highlightI == i && highlightJ == 1) /* High light the present choice */
-		{	attron(A_REVERSE);
-			mvprintw(y, x, "%s", choices[i][1]);
-			attroff(A_REVERSE);
-		}
-		else
-			mvprintw(y, x, "%s", choices[i][1]);
-		++y;
-	}
+    {    if(highlightI == i && highlightJ == 1) /* High light the present choice */
+        {    attron(A_REVERSE);
+            mvprintw(y, x, "%s", choices[i][1]);
+            attroff(A_REVERSE);
+        }
+        else
+            mvprintw(y, x, "%s", choices[i][1]);
+        ++y;
+    }
         
         x = 20;
         y = 7;
         
         //file messages
         for(i = 5; i < 6; ++i)
-	{	if(highlightI == i && highlightJ == 1 && saveFinal == 1) /* High light the present choice */
-		{	attron(A_REVERSE);
-			mvprintw(y, x, "%s", choices[i][2]);
-			attroff(A_REVERSE);
-		}
-		else
-			mvprintw(y, x, "%s", choices[i][2]);
-		++y;
-	}
+    {    if(highlightI == i && highlightJ == 1 && saveFinal == 1) /* High light the present choice */
+        {    attron(A_REVERSE);
+            mvprintw(y, x, "%s", choices[i][2]);
+            attroff(A_REVERSE);
+        }
+        else
+            mvprintw(y, x, "%s", choices[i][2]);
+        ++y;
+    }
         
         x = 20;
         y = 8;
         
         //file messages
         for(i = 6; i < 7; ++i)
-	{	if(highlightI == i && highlightJ == 1 && loadFinal == 1) /* High light the present choice */
-		{	attron(A_REVERSE);
-			mvprintw(y, x, "%s", choices[i][2]);
-			attroff(A_REVERSE);
-		}
-		else
-			mvprintw(y, x, "%s", choices[i][2]);
-		++y;
-	}
+    {    if(highlightI == i && highlightJ == 1 && loadFinal == 1) /* High light the present choice */
+        {    attron(A_REVERSE);
+            mvprintw(y, x, "%s", choices[i][2]);
+            attroff(A_REVERSE);
+        }
+        else
+            mvprintw(y, x, "%s", choices[i][2]);
+        ++y;
+    }
         
         
         // - signs
         x = 9;
-	y = 2;
-	//box(menu_win, 0, 0);
-	for(i = 1; i < 5; ++i)
-	{	if(highlightI == i && highlightJ == 1) /* High light the present choice */
-		{	attron(A_REVERSE); 
-			mvprintw(y, x, "%s", choices[i][1]);
-			attroff(A_REVERSE);
-		}
-		else
-			mvprintw(y, x, "%s", choices[i][1]);
-		++y;
-	}
+    y = 2;
+    //box(menu_win, 0, 0);
+    for(i = 1; i < 5; ++i)
+    {    if(highlightI == i && highlightJ == 1) /* High light the present choice */
+        {    attron(A_REVERSE);
+            mvprintw(y, x, "%s", choices[i][1]);
+            attroff(A_REVERSE);
+        }
+        else
+            mvprintw(y, x, "%s", choices[i][1]);
+        ++y;
+    }
         
         // + signs
         x = 10;
-	y = 2;
-	//box(menu_win, 0, 0);
-	for(i = 1; i < 5; ++i)
-	{	if(highlightI == i && highlightJ == 2) /* High light the present choice */
-		{	attron(A_REVERSE); 
-			mvprintw(y, x, "%s", choices[i][2]);
-			attroff(A_REVERSE);
-		}
-		else
-			mvprintw(y, x, "%s", choices[i][2]);
-		++y;
-	}
+    y = 2;
+    //box(menu_win, 0, 0);
+    for(i = 1; i < 5; ++i)
+    {    if(highlightI == i && highlightJ == 2) /* High light the present choice */
+        {    attron(A_REVERSE);
+            mvprintw(y, x, "%s", choices[i][2]);
+            attroff(A_REVERSE);
+        }
+        else
+            mvprintw(y, x, "%s", choices[i][2]);
+        ++y;
+    }
         
         
         //print column labels
@@ -1435,7 +1436,7 @@ void print_menu(int highlightI, int highlightJ){
             mvprintw(y, x + 12, "*");
                
             
-            x = x +16; 
+            x = x +16;
         //}
         
         }
@@ -1447,7 +1448,7 @@ void print_menu(int highlightI, int highlightJ){
             x = 14;
         for(int j = 3; j < 67; j++){
             if(highlightI == i && highlightJ == j){
-                attron(A_REVERSE); 
+                attron(A_REVERSE);
                 mvprintw(y, x, choices[i][j]);
                 attroff(A_REVERSE);    
             }
@@ -1466,7 +1467,7 @@ void print_menu(int highlightI, int highlightJ){
         }
         mvprintw(6, 10, choices[6][4]);
         
-	refresh();
+    refresh();
 }
 
 void writeFile(char *fileName){
@@ -1486,12 +1487,12 @@ void writeFile(char *fileName){
         //return;
     //}
     
-    char *fName = malloc(length5 + length6 + 1);
+    char *fName = (char*)malloc(length5 + length6 + 1);
     strcpy(fName, temp4);
     
     for(int i = 0; i< length6; i++){
         
-        fName[length5 + i] = fileName[i]; 
+        fName[length5 + i] = fileName[i];
     }
     fName[length5+length6] = '\0';
     
@@ -1575,12 +1576,12 @@ void readFile(char *fileName){
         return;
     }
     
-    char *fName = malloc(length5 + length6 + 1);
+    char *fName = (char*)malloc(length5 + length6 + 1);
     strcpy(fName, temp4);
     
     for(int i = 0; i< length6; i++){
         
-        fName[length5 + i] = fileName[i]; 
+        fName[length5 + i] = fileName[i];
     }
     
     fName[length5+length6] = '\0';
@@ -1622,7 +1623,7 @@ void readFile(char *fileName){
         }
         //temp5[counter] = ch;
     }
-    bpm2 = malloc(counter+1);
+    bpm2 = (char*)malloc(counter+1);
     
     for(int i = 0; i < counter; i++){
         bpm2[i] = buff[i];
@@ -1689,7 +1690,7 @@ void readFile(char *fileName){
     
     //choices[1][3] = buff;
     
-    char *temp66 = malloc(2);
+    char *temp66 = (char*)malloc(2);
     
     //load bass notes
     int index;
@@ -1797,7 +1798,7 @@ void readFile(char *fileName){
     
     started = startedNext;
     
-  
+ 
     
     //call printmenu
    Pt_Stop();
@@ -1812,3 +1813,6 @@ void readFile(char *fileName){
     choices[6][2] = "settings loaded                              ";
      print_menu(6, 1);
 }
+
+
+
