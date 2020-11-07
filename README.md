@@ -3,7 +3,9 @@ Software Drum Machine.
 
 Dependencies: Ncurses (UI), Libsndfile (File I/O), PortMidi (midi), PortAudio (sample playback).
 
-Directions: download and install third party libraries.  These libraries are not compatible with PulseAudio.  If you are running PulseAudio for Linux, you will need to turn it off.  Sample paths are hardcoded.
+Directions: download and install third party libraries.  These libraries are not compatible with PulseAudio.  If you are running PulseAudio for Linux, you will need to turn it off.  
+
+Sample paths are hardcoded at lines 291-301.  You can use the three samples provided, or use your own .wav files.
 
 To compile C program, you need to explicitly link with dependencies.
 
