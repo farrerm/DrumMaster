@@ -8,7 +8,7 @@
 #include "assert.h"
 #include <math.h>
 #include "portaudio.h"
-#include "pa_linux_alsa.h"
+//#include "pa_linux_alsa.h"
 #include "unistd.h"
 #include "pthread.h"
 #include "sndfile.h"
@@ -288,17 +288,17 @@ int main(int argc, char *argv[])
     int          readcount ;
    
     char         *infilename;
-    infilename = "/home/matt/699/finalProj/Kick9Mono.wav";
+    infilename = "Kick9Mono.wav";
     
     SF_INFO    sfinfo2;
     int     readcount2;
     char    *infilename2;
     
-    infilename2 = "/home/matt/699/finalProj/Snare4Mono.wav";
+    infilename2 = "Snare4Mono.wav";
     
     SF_INFO sfinfo3;
     int readcount3;
-    char *infilename3 = "/home/matt/699/finalProj/Hat2Mono.wav";
+    char *infilename3 = "Hat2Mono.wav";
     
     
     //choices[1][0] = "new";
@@ -546,15 +546,15 @@ int main(int argc, char *argv[])
               //&myData );*/
     
         
-    PaAlsa_SetNumPeriods(2);
-    PaAlsa_SetRetriesBusy(100);
-     PaAlsa_EnableRealtimeScheduling(stream, 1);
+  //  PaAlsa_SetNumPeriods(2);
+   // PaAlsa_SetRetriesBusy(100);
+    // PaAlsa_EnableRealtimeScheduling(stream, 1);
     
    
      
      err = Pa_StartStream( stream );
      
-     PaAlsa_EnableRealtimeScheduling(stream, 1);
+    // PaAlsa_EnableRealtimeScheduling(stream, 1);
     
      int pressedKeys[2];
      int keyCount = 0;
