@@ -982,6 +982,7 @@ int main(int argc, char *argv[])
                      
                      choices[5][2] = "Enter file name: ";
                      print_menu(highlightI, highlightJ);
+                     int len3 = len2-1;
                      while(1){
                          
                          //saveFinal = 0;
@@ -1006,6 +1007,7 @@ int main(int argc, char *argv[])
                          //char d = getch();  
                          choices[5][2] = str;
                          temp1 = str2;
+                         len3 = len2-1;
                          
                          //mvprintw(15, 15, temp1);
                          //mvprintw(16, 16, choices[5][2]);
@@ -1013,9 +1015,9 @@ int main(int argc, char *argv[])
                          
                         }
                          else if (d == 10){
-                             if(len2 == 0){
+                             if(len3 < 0){
                                  saveFinal = 0;
-                                 choices[5][2] = "error                  ";
+                                 choices[5][2] = "error  calling                ";
                                  
                                  break;
                              }
@@ -1089,7 +1091,7 @@ int main(int argc, char *argv[])
                          else if (e == 10){
                              if(len4 == 0){
                                  loadFinal = 0;
-                                 choices[6][2] = "error                  ";
+                                 choices[6][2] = "error  reading                ";
                                  
                                  break;
                              }
@@ -1475,7 +1477,7 @@ void writeFile(char *fileName){
     FILE *fptr;
     //mvprintw(10, 20, fileName);
     //print_menu(6,1);
-    char *temp4 = "/home/matt/Drum14/";
+    char *temp4 = "";
     
     size_t length5 = strlen(temp4);
     size_t length6 = strlen(fileName);
@@ -1499,11 +1501,11 @@ void writeFile(char *fileName){
     
     //strcat(temp4, fileName);
     
-    fptr = fopen(fName, "w");
+    fptr = fopen(fName, "w+");
     
     if (fptr == NULL){
         
-        mvprintw(20, 20, "Error!");
+        mvprintw(20, 20, "fptr == null !");
         exit(1);
     }
     
@@ -1563,28 +1565,31 @@ void readFile(char *fileName){
     FILE *fptr;
     
     //mvprintw(10, 10, fileName);
+    char * dirName = get_current_dir_name();
+    size_t dirLength = strlen(dirName);
     
-    char *temp4 = "/home/matt/Drum14/";
+    char *temp4 = "";
     
     size_t length5 = strlen(temp4);
-    size_t length6 = strlen(fileName);
+    size_t fnLength = strlen(fileName);
     
-    if (length6 == 5){
+    if (fnLength == 0){
         
         choices[6][2] = "error: enter a filename";
         loadFinal = 0;
         return;
     }
     
-    char *fName = (char*)malloc(length5 + length6 + 1);
-    strcpy(fName, temp4);
-    
-    for(int i = 0; i< length6; i++){
+    char *fName = (char*)malloc(length5 + fnLength + dirLength+3);
+    *strcpy(fName, dirName);
+    fName[dirLength] = '/';
+   // for (int i = 0; i < dirLength; i++){}
+
+   for(int i = 0; i< fnLength+1; i++){
         
-        fName[length5 + i] = fileName[i];
-    }
-    
-    fName[length5+length6] = '\0';
+        fName[dirLength + i+1] = fileName[i];
+   }
+ 
     
     //strcat(temp4, fileName);
     
@@ -1592,7 +1597,7 @@ void readFile(char *fileName){
     
     if (fptr == NULL){
         
-        choices[6][2] = "Error!                 ";
+        choices[6][2] = fName;
         print_menu(6,1);
         loadFinal = 0;
         return;
