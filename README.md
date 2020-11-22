@@ -19,6 +19,8 @@ Samples are provided.  You may provide your own drum samples (or any .wav file).
 
 Provides ncurses interface directly in terminal.  User may move cursor using arrow keys.  Press enter to make a change to the interface.  You can "perform" by entering a pattern, saving it, entering another pattern, then loading the original pattern.  There is no limit to your creativity.
 
+Saving and loading happen in real time with no break in the action!
+
 To compile C program, you need to explicitly link with dependencies.
 
 Example: 
