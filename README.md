@@ -14,7 +14,7 @@ https://sourceforge.net/p/portmedia/wiki/Installing_portmidi_on_Linux/
 https://medium.com/@niveditha.itengineer/learn-how-to-setup-portaudio-and-pyaudio-in-ubuntu-to-play-with-speech-recognition-8d2fff660e94
 
 
-Drum machine is configured for Linux 32 bit machine.  (Does not work so far on Mac.) Libraries are not compatible with PulseAudio.  If you are running PulseAudio for Linux, you will need to turn it off.  My 32 bit Linux Mint runs PulseAudio.  However, DrumMaster works out of the box on a 64 bit Ubuntu VM.
+Drum machine is configured for Linux 32 bit machine.  (Does not work so far on Mac.) Libraries are not compatible with PulseAudio.  If you are running PulseAudio for Linux, you will need to turn it off.  My 32 bit Linux Mint runs PulseAudio.  However, DrumMaster works out of the box on a 64 bit Ubuntu VM.  (however I am currently debugging saving/loading settings for platform independent use.)
 
 Samples are provided.  You may provide your own drum samples (or any .wav file).  In that case, please change sample file names at lines 291-301.
 
