@@ -3,7 +3,13 @@ Software Drum Machine.
 
 Dependencies: Ncurses (UI), Libsndfile (File I/O), PortMidi (midi), PortAudio (sample playback).
 
-Directions: download and install third party libraries ncurses, libsndfile, portmidi, portaudio.  
+Directions: download and install third party libraries ncurses, libsndfile, portmidi, portaudio. 
+
+https://www.cyberciti.biz/faq/linux-install-ncurses-library-headers-on-debian-ubuntu-centos-fedora/
+https://stackoverflow.com/questions/44910504/trying-to-install-libsndfile-on-ubuntu-16
+https://sourceforge.net/p/portmedia/wiki/Installing_portmidi_on_Linux/
+https://medium.com/@niveditha.itengineer/learn-how-to-setup-portaudio-and-pyaudio-in-ubuntu-to-play-with-speech-recognition-8d2fff660e94
+
 
 Drum machine is configured for Linux 32 bit machine.  (Does not work so far on Mac.) Libraries are not compatible with PulseAudio.  If you are running PulseAudio for Linux, you will need to turn it off.  
 
