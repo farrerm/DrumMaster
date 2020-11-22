@@ -6,8 +6,11 @@ Dependencies: Ncurses (UI), Libsndfile (File I/O), PortMidi (midi), PortAudio (s
 Directions: download and install third party libraries ncurses, libsndfile, portmidi, portaudio. 
 
 https://www.cyberciti.biz/faq/linux-install-ncurses-library-headers-on-debian-ubuntu-centos-fedora/
+
 https://stackoverflow.com/questions/44910504/trying-to-install-libsndfile-on-ubuntu-16
+
 https://sourceforge.net/p/portmedia/wiki/Installing_portmidi_on_Linux/
+
 https://medium.com/@niveditha.itengineer/learn-how-to-setup-portaudio-and-pyaudio-in-ubuntu-to-play-with-speech-recognition-8d2fff660e94
 
 
