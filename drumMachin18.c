@@ -122,7 +122,7 @@ static int paPlaySample( const void *inputBuffer, void *outputBuffer,
             
         if(data->snareIndex != -1){
                     
-        	currValue += data->snare[data->snareIndex] * data->snareGain;
+       	    currValue += data->snare[data->snareIndex] * data->snareGain;
             data->snareIndex++;
             if (data->snareIndex == data->snareSize){
                 data->snareIndex = -1;
