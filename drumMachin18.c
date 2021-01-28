@@ -8,7 +8,6 @@
 #include "assert.h"
 #include <math.h>
 #include "portaudio.h"
-//#include "pa_linux_alsa.h"
 #include "unistd.h"
 #include "pthread.h"
 #include "sndfile.h"
@@ -49,11 +48,9 @@ void print_menu(int highlightI, int highlightJ);
 void writeFile(char *fileName);
 void readFile(char *fileName);
 
-/* #define SAMPLE_RATE  (17932) // Test failure to open with this value. */
 #define SAMPLE_RATE       (48000)
 #define FRAMES_PER_BUFFER   (8)
 #define NUM_SECONDS          (10)
-/* #define DITHER_FLAG     (paDitherOff)  */
 #define DITHER_FLAG           (0)
 
 #define TIME_PROC ((int32_t (*)(void *)) Pt_Time)
@@ -66,55 +63,38 @@ void readFile(char *fileName);
 #define PRINTF_S_FORMAT "%.8f"
 
 PaStreamParameters inputParameters, outputParameters;
-    PaStream *stream = NULL;
-    PaError err;
-    float *bassDrum;
-    int bassSize;
-   
-    int bassIndex;
-    
-    float *snareDrum;
-    int snareSize;
-   
-    int snareIndex;
-   
-    float *hatDrum;
- 
-    int hatSize;
-    int hatIndex;
-    
-    float *outBuff;
-    
-    int currBeat;
+PaStream *stream = NULL;
+PaError err;
+float *bassDrum;
+int bassSize;
+int bassIndex;
+float *snareDrum;
+int snareSize;
+int snareIndex;
+float *hatDrum;
+int hatSize;
+int hatIndex;
+float *outBuff;
+int currBeat;
 
 typedef struct
 {
     int bpm;
-    
     int currBeat;
-    
     float *bass;
     int bassSize;
-   
     float bassGain;
     int bassIndex;
-        
     float *snare;
     int snareSize;
-    
     float snareGain;
     int snareIndex;
-    
     float *hat;
     int hatSize;
-   
     float hatGain;
     int hatIndex;
-    
     float masterGain;
-    
     char ***choices;
-    
     float *outBuff;
     PaStream *stream;
 }
