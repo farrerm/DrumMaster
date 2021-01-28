@@ -1,5 +1,3 @@
-
-
 #include "portmidi.h"
 #include "porttime.h"
 #include "stdlib.h"
