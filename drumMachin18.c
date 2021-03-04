@@ -784,7 +784,7 @@ int main(int argc, char *argv[])
                             print_menu(highlightI, highlightJ);
                         }
                         else if (d == 10){
-                            if(len3 < 0){
+                            if(len3+1 < 0){
                                 saveFinal = 0;
                                 choices[5][2] = "error  calling                ";
                                 break;
@@ -834,7 +834,7 @@ int main(int argc, char *argv[])
                             print_menu(highlightI, highlightJ);
                         }
                         else if (e == 10){
-                            if(len4 == 0){
+                            if(len4+1 == 0){
                                 loadFinal = 0;
                                 choices[6][2] = "error  reading                ";
                                 break;
