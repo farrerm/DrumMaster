@@ -15,7 +15,7 @@ https://medium.com/@niveditha.itengineer/learn-how-to-setup-portaudio-and-pyaudi
 
 Works out of the box with Ubuntu Linux 64 bit!  (Does not work so far on Mac.)  However, earlier versions of Linux may use PulseAudio audio driver.  If so, PulseAudio must be turned off.
 
-Samples are provided.  You may provide your own drum samples (or any .wav file).  In that case, please change sample file names at lines 291-301.
+Samples are provided.  You may provide your own drum samples (or any .wav file).  In that case, please change sample file names at lines 259-269.
 
 Provides ncurses interface directly in terminal.  User may move cursor using arrow keys.  Press enter to make a change to the interface.  You can "perform" by entering a pattern, saving it, entering another pattern, then loading the original pattern.  There is no limit to your creativity.
 
