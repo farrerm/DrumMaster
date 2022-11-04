@@ -9,7 +9,7 @@ https://www.cyberciti.biz/faq/linux-install-ncurses-library-headers-on-debian-ub
 
 https://stackoverflow.com/questions/44910504/trying-to-install-libsndfile-on-ubuntu-16
 
-https://sourceforge.net/p/portmedia/wiki/Installing_portmidi_on_Linux/
+https://schollz.com/blog/portmidi/
 
 https://medium.com/@niveditha.itengineer/learn-how-to-setup-portaudio-and-pyaudio-in-ubuntu-to-play-with-speech-recognition-8d2fff660e94
 
