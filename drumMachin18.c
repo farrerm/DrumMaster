@@ -1210,7 +1210,10 @@ void writeFile(char *fileName){
 void readFile(char *fileName){
     
     FILE *fptr;
-    char * dirName = get_current_dir_name();
+    char * dirName = (char*)malloc(sizeof(char)*1000);
+    getcwd(dirName, 1000);
+
+    //get_current_dir_name();
     size_t dirLength = strlen(dirName);
     
     char *temp4 = "";
