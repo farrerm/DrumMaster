@@ -5,6 +5,8 @@ Dependencies: Ncurses (UI), Libsndfile (File I/O), PortMidi (midi), PortAudio (s
 
 Directions: download and install third party libraries ncurses, libsndfile, portmidi, portaudio. 
 
+Below are instructions for Linux.  To do: make sure instructions for Mac are included.
+
 https://www.cyberciti.biz/faq/linux-install-ncurses-library-headers-on-debian-ubuntu-centos-fedora/
 
 https://stackoverflow.com/questions/44910504/trying-to-install-libsndfile-on-ubuntu-16
@@ -13,7 +15,7 @@ https://schollz.com/blog/portmidi/
 
 https://medium.com/@niveditha.itengineer/learn-how-to-setup-portaudio-and-pyaudio-in-ubuntu-to-play-with-speech-recognition-8d2fff660e94
 
-Works out of the box with Ubuntu Linux 64 bit!  (Does not work so far on Mac.)  However, earlier versions of Linux may use PulseAudio audio driver.  If so, PulseAudio must be turned off.
+Works with Mac and Linux.  Tested on Mac Mojave and Linux Ubuntu.
 
 Samples are provided.  You may provide your own drum samples (or any .wav file).  In that case, please change sample file names at lines 259-269.
 
@@ -25,7 +27,7 @@ To compile C program, you need to explicitly link with dependencies.
 
 Example: 
 
-g++ -o drum drumMachin18.c -lncurses -lsndfile -lportaudio -lportmidi
+g++ -o drum drumMachine.c -lncurses -lsndfile -lportaudio -lportmidi
 
 
 
