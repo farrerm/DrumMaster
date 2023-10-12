@@ -422,8 +422,6 @@ int main(int argc, char *argv[])
     outputParameters.device = Pa_GetDefaultOutputDevice();  
  
     outputInfo = Pa_GetDeviceInfo( outputParameters.device );   
-
-    outputParameters.device = 0;
     outputParameters.channelCount = 1;
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = Pa_GetDeviceInfo(0)->defaultLowOutputLatency;
