@@ -39,6 +39,20 @@ Example:
 
 g++ -o drum drumMachine.c -lncurses -lsndfile -lportaudio -lportmidi
 
+How to use
+
+Use arrow keys to move the cursor around the beat grid.  Pressing 'Enter' places an X on the grid.  The X can represent 3 different drum sounds depending on what row it is in.
+
+the bpm field takes values from 0-999.  You won't hear much if you set it to 0, however.  To modify bpm from its default of 120, move the cursor over the bpm and press enter.  You can then enter the desired bpm.  Press enter a second time to update it.
+
+Saving your current beat and bpm settings, and then loading them again, works much the same way.  Same with starting and stopping the machine.
+
+Future Work
+
+It would be nice to select the time signature and size of the grid.  
+
+Known issue / bug: the load file prompt works but shows a bit of extra text if one repeatedly presses enter without providing any input.
+
 
 
 Have fun!
