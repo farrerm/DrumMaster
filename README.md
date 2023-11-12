@@ -8,8 +8,11 @@ Directions: download and install third party libraries ncurses, libsndfile, port
 Mac
 
 brew install ncurses
+
 brew install libsndfile
+
 brew install portmidi
+
 brew install portaudio
 
 Linux
