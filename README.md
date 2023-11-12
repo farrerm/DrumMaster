@@ -5,7 +5,14 @@ Dependencies: Ncurses (UI), Libsndfile (File I/O), PortMidi (midi), PortAudio (s
 
 Directions: download and install third party libraries ncurses, libsndfile, portmidi, portaudio. 
 
-Below are instructions for Linux.  To do: make sure instructions for Mac are included.
+Mac
+
+brew install ncurses
+brew install libsndfile
+brew install portmidi
+brew install portaudio
+
+Linux
 
 https://www.cyberciti.biz/faq/linux-install-ncurses-library-headers-on-debian-ubuntu-centos-fedora/
 
