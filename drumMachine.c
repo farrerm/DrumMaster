@@ -1,14 +1,12 @@
-#include "portmidi.h"
-#include "porttime.h"
-#include "stdlib.h"
-#include "stdio.h"
-#include "string.h"
-#include "assert.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
 #include <math.h>
-#include "portaudio.h"
-#include "unistd.h"
-#include "pthread.h"
-#include "sndfile.h"
+#include <portmidi.h>
+#include <porttime.h>
+#include <portaudio.h>
+#include <sndfile.h>
 #include <ncurses.h>
 
 float bassGain = .5;
