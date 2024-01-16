@@ -215,8 +215,6 @@ int main(int argc, char *argv[])
     {   /* exit */
         return  1 ;
     }
-
-    int nFrames = (int)sfinfo.frames;
     
     if (! (infile2 = sf_open (infilename2, SFM_READ, &sfinfo2)))
     {   /* exit */
@@ -229,17 +227,17 @@ int main(int argc, char *argv[])
     }
     
     //get number of samples from files and allocate memory
-    int bassSize = sfinfo.frames;
+    int bassSize = (int)sfinfo.frames;
     
     sf_close(infile);
     bassDrum = (float*)malloc(bassSize*4);
    
-    int snareSize = sfinfo2.frames;
+    int snareSize = (int)sfinfo2.frames;
     
     sf_close(infile2);
     snareDrum = (float*)malloc(snareSize*4);
     
-    int hatSize = sfinfo3.frames;
+    int hatSize = (int)sfinfo3.frames;
     
     sf_close(infile3);
     hatDrum = (float*)malloc(hatSize*4);
