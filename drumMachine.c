@@ -117,8 +117,10 @@ void process_midi(PtTimestamp timestamp, void *userData)
     }
     
     data->currBeat++;
-    if (data->currBeat == 67){
-        data->currBeat = 3;
+    //there are 64 16th notes on the grid
+    //when we reach the end of the grid, wrap around to the start
+    if (data->currBeat == 65){
+        data->currBeat = 1;
     }
    
 }//end process_midi
@@ -137,7 +139,7 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 7; i++){
         choices[i] = (char**)malloc(67*sizeof(char*));
     }
-    currBeat = 3;
+    currBeat = 1;
     
     choices[0][0] = BPMtent;
     choices[1][0] = "bass";
