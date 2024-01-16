@@ -117,8 +117,10 @@ void process_midi(PtTimestamp timestamp, void *userData)
     }
     
     data->currBeat++;
-    if (data->currBeat == 67){
-        data->currBeat = 3;
+    //there are 64 16th notes on the grid
+    //when we reach the end of the grid, wrap around to the start
+    if (data->currBeat == 65){
+        data->currBeat = 1;
     }
    
 }//end process_midi
@@ -137,7 +139,7 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 7; i++){
         choices[i] = (char**)malloc(67*sizeof(char*));
     }
-    currBeat = 3;
+    currBeat = 1;
     
     choices[0][0] = BPMtent;
     choices[1][0] = "bass";
@@ -224,57 +226,18 @@ int main(int argc, char *argv[])
         return  1 ;
     }
     
-    
-    //need to count number of samples in sample files so we can
-    //allocate arrays for samples using malloc.
-    
-    //count bass samples
-    int counter = 0;
-    while ((readcount = sf_read_float (infile, sampleBlock, 512)))
-    {        
-        if(readcount == 512){
-            counter++;
-        }
-        if(readcount < 512){
-            break;
-        }
-    } 
-    
-    int bassSize = counter* 512 + readcount;
+    //get number of samples from files and allocate memory
+    int bassSize = (int)sfinfo.frames;
     
     sf_close(infile);
     bassDrum = (float*)malloc(bassSize*4);
    
-    //count snare samples.
-    int counter2 = 0;
-    
-    while ((readcount2 = sf_read_float(infile2, sampleBlock, 512)))
-    {        
-        if(readcount2 == 512){
-            counter2++;
-        }
-        if(readcount2 < 512){
-            break;
-        }
-    }
-    int snareSize = counter2* 512 + readcount2;
+    int snareSize = (int)sfinfo2.frames;
     
     sf_close(infile2);
     snareDrum = (float*)malloc(snareSize*4);
     
-    //count hat samples
-    int counter3 = 0;
-   
-    while ((readcount3 = sf_read_float(infile3, sampleBlock, 512)))
-    {        
-        if(readcount3 == 512){
-            counter3++;
-        }
-        if(readcount3 < 512){
-            break;
-        }
-    }
-    int hatSize = counter3* 512 + readcount3;
+    int hatSize = (int)sfinfo3.frames;
     
     sf_close(infile3);
     hatDrum = (float*)malloc(hatSize*4);
@@ -287,7 +250,6 @@ int main(int argc, char *argv[])
         return  1 ;
     } 
    
- 
     int index1 = 0;
     while ((readcount = sf_read_float (infile, sampleBlock, 512)))
     {   
